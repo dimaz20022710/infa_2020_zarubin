@@ -4,7 +4,7 @@ from random import randint as ran
 
 
 number_of_turtles = 34
-steps_of_time_number = 1000
+steps_of_time_number = 500
 r = 300
 
 j = 0
