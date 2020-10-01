@@ -14,6 +14,10 @@ futbolka = (128, 128, 128)
 cherny = (0, 0, 0)
 koja = (255, 165, 0)
 platye = (128, 0, 0)
+krasny = (255, 0, 0)
+beliy = (255, 255, 255)
+
+time = 0
 
 FPS = 10
 screen = pygame.display.set_mode((EcrX, EcrY))
@@ -21,15 +25,17 @@ screen = pygame.display.set_mode((EcrX, EcrY))
 
 def fon(sootnosheniye=0.5):
     """
+    делает два прямоугольника: землю и небо
     :param sootnosheniye: высота земли к высоте неба
     :return:
     """
-    rect(screen, (0, 255, 0), (0, EcrY * (1 - sootnosheniye), EcrX, EcrY * sootnosheniye))
-    rect(screen, (0, 0, 128), (0, 0, EcrX, EcrY * (1 - sootnosheniye)))
+    rect(screen, siniy, (0, EcrY * (1 - sootnosheniye), EcrX, EcrY * sootnosheniye))
+    rect(screen, zeleny, (0, 0, EcrX, EcrY * (1 - sootnosheniye)))
 
 
 def sun(x=30, y=30, r=30, d=2):
     """
+    рисует солнышко (не солнце, а именно детское солнышко)
     :param x: координата х центра солнца
     :param y: координата у центра солнца
     :param r: рариус солнца
@@ -41,42 +47,60 @@ def sun(x=30, y=30, r=30, d=2):
         line(screen, zhelty, (x, y), (x + 100 * np.sin(i), y + 100 * np.cos(i)), d)
 
 
-def roja():
-    circle(screen, koja, (135, 130), 30)
-    circle(screen, cherny, (145, 117), 3)
-    circle(screen, cherny, (125, 117), 3)
-    circle(screen, cherny, (135, 130), 3)
-    arc(screen, cherny, (125, 132, 20, 15), 4, 6)
+def roja(x, y, r):
+    """
+    рисует рожу
+    :param x: координата х центра рожи
+    :param y: координата у центра рожи
+    :param r: размер - радиур рожи
+    :return: ))0)
+    """
+    circle(screen, koja, (x, y), r)
+    circle(screen, cherny, (x + r // 3, int(round(y - 4 * r // 9))), r // 10)
+    circle(screen, cherny, (x - r // 3, int(round(y - 4 * r // 9))), r // 10)
+    circle(screen, cherny, (x, y), r // 10)
+    arc(screen, cherny, (x - r // 3, y + r // 15, 2 * r // 3, r // 2), 4, 6)
 
 
-def pocan():
-    ellipse(screen, futbolka, (100, 130, 70, 180))
-    line(screen, cherny, (120, 300), (80, 350), 5)
-    line(screen, cherny, (150, 300), (190, 350), 5)
-    line(screen, cherny, (110, 170), (60, 250), 5)
-    line(screen, cherny, (160, 170), (225, 250), 5)
-    roja()
+def pocan(x=135, y=130, r=100):
+    """
+    рисует поцана
+    :param x: координата х центра головы
+    :param y: координата у центра головы
+    :param r: коэффициент размера, примерно 2/5 высоты
+    :return:
+    """
+    ellipse(screen, futbolka, (x - 35 * r // 100, y, 7 * r // 10, 18 * r // 10))
+    line(screen, cherny, (x - 15 * r // 100, y + 17 * r // 10), (x - 55 * r // 100, y + 22 * r // 10), r // 20)
+    line(screen, cherny, (x + 15 * r // 100, y + 17 * r // 10), (x + 55 * r // 100, y + 22 * r // 10), r // 20)
+    line(screen, cherny, (x - 25 * r // 100, y + 4 * r // 10), (x - 75 * r // 100, y + 12 * r // 10), r // 20)
+    line(screen, cherny, (x + 25 * r // 100, y + 4 * r // 10), (x + 75 * r // 100, y + 12 * r // 10), r // 20)
+    roja(x, y, 3 * r // 10)
 
 
-def morojenoe():
-    polygon(screen, (128, 0, 0), [(60, 250), (60, 220), (20, 235)])
-    circle(screen, (255, 0, 0), (30, 230), 10)
-    circle(screen, (0, 0, 0), (35, 225), 10)
-    circle(screen, (255, 255, 255), (50, 220), 10)
+def morojenoe(x=60, y=250, r=10, fi):
+    """
+
+    :param x:
+    :param y: 
+    :param r: коэффициент размера, равен радиусу шариков
+    :param fi: угол поворота мороженого
+    :return:
+    """
+    polygon(screen, platye, [(x, y), (x, y - 3 * r), (x - 25 * r // 10, y - 15 * r // 10)])
+    circle(screen, krasny, (x - 2 * r, 210), r)
+    circle(screen, cherny, (x - 25 * r // 10, 225), r)
+    circle(screen, beliy, (x - r, 218), r)
 
 
 def pocanessa():
     polygon(screen, platye, [(230, 300), (400, 300), (315, 130)])
-    line(screen, (0, 0, 0), (300, 300), (250, 350), 5)
-    line(screen, (0, 0, 0), (340, 300), (390, 350), 5)
-    line(screen, (0, 0, 0), (300, 170), (225, 250), 5)
-    line(screen, (0, 0, 0), (330, 170), (370, 210), 5)
-    line(screen, (0, 0, 0), (370, 210), (410, 210), 5)
-    circle(screen, (255, 165, 0), (315, 130), 30)
-    circle(screen, (0, 0, 0), (325, 117), 3)
-    circle(screen, (0, 0, 0), (305, 117), 3)
-    circle(screen, (0, 0, 0), (315, 130), 3)
-    arc(screen, (0, 0, 0), (305, 132, 20, 15), 4, 6)
+    line(screen, cherny, (300, 300), (250, 350), 5)
+    line(screen, cherny, (340, 300), (390, 350), 5)
+    line(screen, cherny, (300, 170), (225, 250), 5)
+    line(screen, cherny, (330, 170), (370, 210), 5)
+    line(screen, cherny, (370, 210), (410, 210), 5)
+    roja(315, 130, 25)
 
 
 def sharik():
@@ -90,10 +114,11 @@ finished = False
 
 while not finished:
     clock.tick(FPS)
-    fon(0.4)
+    time = time + 1
+    fon(0.6)
     sun()
     morojenoe()
-    pocan()
+    pocan(135, 130, 100)
     pocanessa()
     sharik()
     pygame.display.update()
