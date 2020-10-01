@@ -6,16 +6,21 @@ pygame.init()
 
 FPS = 30
 
+
 def muzica(n):
     file1 = 'muzhickij_dozhd1.mp3'
     file0 = 'Muzhickij_dozhd.mp3'
+    file2 = 'muzhickij_dozhd2.mp3'
     pygame.init()
     pygame.mixer.init()
     if n == 1:
         pygame.mixer.music.load(file1)
     if n == 0:
         pygame.mixer.music.load(file0)
+    if n == 2:
+        pygame.mixer.music.load(file2)
     pygame.mixer.music.play(-1)
+
 
 yellow = (255, 247, 0)
 black = (0, 0, 0)
@@ -36,14 +41,14 @@ def roja(x1, x2, r):
     circle(screen, black, (x1 - r // 3, x2 - r * 11 // 50), r // 10)
     circle(screen, black, (x1 + r // 3, x2 - r * 11 // 50), r // 15)
     polygon(screen, black, (
-    [x1 - r * 8 // 15, x2 - r * 2 // 3], [x1 - r * 2 // 15, x2 - r * 2 // 5], [x1 - r * 11 // 50, x2 - r * 1 // 3],
-    [x1 - r * 8 // 15, x2 - r * 8 // 15]))
+        [x1 - r * 8 // 15, x2 - r * 2 // 3], [x1 - r * 2 // 15, x2 - r * 2 // 5], [x1 - r * 11 // 50, x2 - r * 1 // 3],
+        [x1 - r * 8 // 15, x2 - r * 8 // 15]))
     polygon(screen, black, (
-    [x1 + r * 8 // 15, x2 - r * 2 // 3], [x1 + r * 2 // 15, x2 - r * 6 // 15], [x1 + r * 37 // 150, x2 - r // 3],
-    [x1 + r * 3 // 5, x2 - r * 3 // 5]))
+        [x1 + r * 8 // 15, x2 - r * 2 // 3], [x1 + r * 2 // 15, x2 - r * 6 // 15], [x1 + r * 37 // 150, x2 - r // 3],
+        [x1 + r * 3 // 5, x2 - r * 3 // 5]))
     polygon(screen, black, (
-    [x1 - r // 5, x2 + r * 2 // 3], [x1 + r // 5, x2 + r * 2 // 3], [x1 + r // 5, x2 + r * 11 // 15],
-    [x1 - r // 5, x2 + r * 11 // 15]))
+        [x1 - r // 5, x2 + r * 2 // 3], [x1 + r // 5, x2 + r * 2 // 3], [x1 + r // 5, x2 + r * 11 // 15],
+        [x1 - r // 5, x2 + r * 11 // 15]))
     return ()
 
 
@@ -74,8 +79,6 @@ for i in range(k_pocanov):
     kachalka[i][0] = randint(0, Ecrx)
     kachalka[i][1] = randint(-15 * Ecry, Ecry // 2)
     kachalka[i][2] = randint(75, 150)
-# pocan(380,400,150)
-# roja(500,500,500)
 pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
@@ -88,7 +91,7 @@ while not finished:
     polygon(screen, zemlya, [(0, Ecry // 2), (Ecrx, Ecry // 2), (Ecrx, Ecry), (0, Ecry)])
     for i in range(k_pocanov):
         kachalka[i][1] += 20
-        if (kachalka[i][1] + kachalka[i][2] > 0):
+        if kachalka[i][1] + kachalka[i][2] > 0:
             pocan(kachalka[i][0], kachalka[i][1], kachalka[i][2])
     pygame.display.update()
     for event in pygame.event.get():

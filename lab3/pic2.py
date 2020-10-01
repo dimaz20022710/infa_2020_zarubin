@@ -78,7 +78,7 @@ def pocan(x=135, y=130, r=100):
     roja(x, y, 3 * r // 10)
 
 
-def morojenoe(x=60, y=250, r=10, fi):
+def morojenoe(x=60, y=250, r=10):
     """
 
     :param x:
