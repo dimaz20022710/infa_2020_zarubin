@@ -83,7 +83,7 @@ pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
 
-muzica(1)
+muzica(2)
 
 while not finished:
     clock.tick(FPS)
