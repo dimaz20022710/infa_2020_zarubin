@@ -17,42 +17,82 @@ platye = (128, 0, 0)
 krasny = (255, 0, 0)
 beliy = (255, 255, 255)
 
-# названия файлов импортированных песен
-file0 = 'Russkaya_narodnaya.mp3'
-file1 = 'Pelennor_Fields.mp3'
-file2 = 'Gachi.mp3'
-file3 = 'Where_Is_My_Mind.mp3'
-file4 = 'My_Heart_Will_Go_On.mp3'
-file5 = 'Strength_of_a_Thousand_Men.mp3'
-file6 = 'Doukei_to_Shikabane_no_Michi.mp3'
-file7 = 'Hunt or Be Hunted.mp3'
-file8 = 'Make_It_Bun_Dem.mp3'
-file9 = 'Skyrim_OST.mp3'
-file10 = 'The_Godfather_Theme.mp3'
-file11 = 'JoJo.mp3'
-file12 = 'Юность в сапогах.mp3'
-file13 = 'Battle_Without_Honor.mp3'
-file14 = 'Ievan_Polkka.mp3'
-file15 = 'Privet_Morrikone.mp3'
-file16 = 'He_is_a_pirate.mp3'
-file17 = 'All_Star.mp3'
-file18 = 'Terminator.mp3'
-file19 = 'Imperial_March.mp3'
-file20 = 'Let_It_Go.mp3'
-file21 = 'Back_to_the_Future.mp3'
-file22 = 'Mission_Impossible.mp3'
-file23 = 'See_You_Again.mp3'
-file24 = 'Circle_Of_Life.mp3'
-file25 = 'Interstellar.mp3'
-file26 = 'Vremya_vpered.mp3'
-file27 = 'We_Will_Rock_You.mp3'
-file28 = 'Serbia_strong.mp3'
-file29 = 'YA_kalendar.mp3'
-file30 = 'Mortal_Combat.mp3'
-file31 = 'deja-vu.mp3'
-file32 = 'For_the_Damaged_Coda.mp3'
-file33 = 'CHjornyjj_Bumer.mp3'
-file34 = 'mine diamonds.mp3'
+# названия файлов импортированных песен и изображений
+if 0 == 0:     # просто чтобы свернуть можно было
+    file0 = 'Russkaya_narodnaya.mp3'
+    file1 = 'Pelennor_Fields.mp3'
+    file2 = 'Gachi.mp3'
+    file3 = 'Where_Is_My_Mind.mp3'
+    file4 = 'My_Heart_Will_Go_On.mp3'
+    file5 = 'Strength_of_a_Thousand_Men.mp3'
+    file6 = 'Doukei_to_Shikabane_no_Michi.mp3'
+    file7 = 'Hunt or Be Hunted.mp3'
+    file8 = 'Make_It_Bun_Dem.mp3'
+    file9 = 'Skyrim_OST.mp3'
+    file10 = 'The_Godfather_Theme.mp3'
+    file11 = 'JoJo.mp3'
+    file12 = 'Юность в сапогах.mp3'
+    file13 = 'Battle_Without_Honor.mp3'
+    file14 = 'Ievan_Polkka.mp3'
+    file15 = 'Privet_Morrikone.mp3'
+    file16 = 'He_is_a_pirate.mp3'
+    file17 = 'All_Star.mp3'
+    file18 = 'Terminator.mp3'
+    file19 = 'Imperial_March.mp3'
+    file20 = 'Let_It_Go.mp3'
+    file21 = 'Back_to_the_Future.mp3'
+    file22 = 'Mission_Impossible.mp3'
+    file23 = 'See_You_Again.mp3'
+    file24 = 'Circle_Of_Life.mp3'
+    file25 = 'Interstellar.mp3'
+    file26 = 'Vremya_vpered.mp3'
+    file27 = 'We_Will_Rock_You.mp3'
+    file28 = 'Serbia_strong.mp3'
+    file29 = 'YA_kalendar.mp3'
+    file30 = 'Mortal_Combat.mp3'
+    file31 = 'deja-vu.mp3'
+    file32 = 'For_the_Damaged_Coda.mp3'
+    file33 = 'CHjornyjj_Bumer.mp3'
+    file34 = 'mine diamonds.mp3'
+    surf0 = pygame.image.load('Berezki.jpg')
+    surf1 = pygame.image.load('Пеленнорские поля.jpg')
+    surf2 = pygame.image.load('Гачи.jpg')
+    surf3 = pygame.image.load('Бойцовский клуб.jpeg')
+    surf4 = pygame.image.load('Титаник.jpg')
+    surf5 = pygame.image.load('Сила.jpg')
+    surf6 = pygame.image.load('Атака титанов.jpg')
+    surf7 = pygame.image.load('Дикая охота.jpg')
+    surf8 = pygame.image.load('Огнемет.jpg')
+    surf9 = pygame.image.load('Скайрим.jpg')
+    surf10 = pygame.image.load('Крестный.jpg')
+    surf11 = pygame.image.load('джоджо.jpg')
+    surf12 = pygame.image.load('Солдаты.jpg')
+    surf13 = pygame.image.load('Убить билла.jpg')
+    surf14 = pygame.image.load('полька.jpg')
+    surf15 = pygame.image.load('Бумер.jpg')
+    surf16 = pygame.image.load('pirates-of-caribbean.jpg')
+    surf17 = pygame.image.load('Шрек.png')
+    surf18 = pygame.image.load('Terminator_2.jpg')
+    surf19 = pygame.image.load('Star_Wars.jpg')
+    surf20 = pygame.image.load('Холодное сердце.jpg')
+    surf21 = pygame.image.load('Назад в будущее.jpg')
+    surf22 = pygame.image.load('mission-impossible.jpg')
+    surf23 = pygame.image.load('Форсаж.jpg')
+    surf24 = pygame.image.load('Король лев.jpg')
+    surf25 = pygame.image.load('matthew-mcconaughey.jpg')
+    surf26 = pygame.image.load('Индустриализация.jpg')
+    surf27 = pygame.image.load('Queen.jpg')
+    surf28 = pygame.image.load('Сербия.jpg')
+    surf29 = pygame.image.load('Я календарь.jpg')
+    surf30 = pygame.image.load('мортал комбат.jpg')
+    surf31 = pygame.image.load('Дежа ву.jpg')
+    surf32 = pygame.image.load('Морти.jpg')
+    surf33 = pygame.image.load('Черный бумер.jpg')
+    surf34 = pygame.image.load('мои алмазы.jpg')
+    surf35 = pygame.image.load('Хардбасс.jpg')
+    surf36 = pygame.image.load('Прыжок.jpg')
+    surf37 = pygame.image.load('Большой достаточно.jpg')
+    surf38 = pygame.image.load('мои алмазы.jpg')
 
 # рабочие переменные, лучше не трогать
 time = 0
@@ -97,7 +137,7 @@ def music_box(tip, h=0, cursor=(0, 0)):
                  [EcrX - 15, 24], [EcrX - 12, 24]])
     if tip % 2 == 1:
         polygon(screen, [255, 210, 95],
-                [[EcrX - 200, h - 200], [EcrX, h - 200], [EcrX, h + 1000], [EcrX - 200, h + 1000]])
+                [[EcrX - 200, h], [EcrX, h], [EcrX, h + 1000], [EcrX - 200, h + 1000]])
         line(screen, krasny, [EcrX - 20, 0], [EcrX, 20])
         line(screen, krasny, [EcrX, 0], [EcrX - 20, 20])
         screen.blit(f1.render('русская народная', 1, (0, 0, 0)), (EcrX - 200, h + 0))
@@ -258,86 +298,7 @@ def fon(tip=0):
     :param tip: задает вид фона
     :return:
     """
-    surf = pygame.image.load('Berezki.jpg')
-    if tip == 0:
-        surf = pygame.image.load('Berezki.jpg')
-    if tip == 1:
-        surf = pygame.image.load('Пеленнорские поля.jpg')
-    if tip == 2:
-        surf = pygame.image.load('Гачи.jpg')
-    if tip == 3:
-        surf = pygame.image.load('Бойцовский клуб.jpeg')
-    if tip == 4:
-        surf = pygame.image.load('Титаник.jpg')
-    if tip == 5:
-        surf = pygame.image.load('Сила.jpg')
-    if tip == 6:
-        surf = pygame.image.load('Атака титанов.jpg')
-    if tip == 7:
-        surf = pygame.image.load('Дикая охота.jpg')
-    if tip == 8:
-        surf = pygame.image.load('Огнемет.jpg')
-    if tip == 9:
-        surf = pygame.image.load('Скайрим.jpg')
-    if tip == 10:
-        surf = pygame.image.load('Крестный.jpg')
-    if tip == 11:
-        surf = pygame.image.load('джоджо.jpg')
-    if tip == 12:
-        surf = pygame.image.load('Солдаты.jpg')
-    if tip == 13:
-        surf = pygame.image.load('Убить билла.jpg')
-    if tip == 14:
-        surf = pygame.image.load('полька.jpg')
-    if tip == 15:
-        surf = pygame.image.load('Бумер.jpg')
-    if tip == 16:
-        surf = pygame.image.load('pirates-of-caribbean.jpg')
-    if tip == 17:
-        surf = pygame.image.load('Шрек.png')
-    if tip == 18:
-        surf = pygame.image.load('Terminator_2.jpg')
-    if tip == 19:
-        surf = pygame.image.load('Star_Wars.jpg')
-    if tip == 20:
-        surf = pygame.image.load('Холодное сердце.jpg')
-    if tip == 21:
-        surf = pygame.image.load('Назад в будущее.jpg')
-    if tip == 22:
-        surf = pygame.image.load('mission-impossible.jpg')
-    if tip == 23:
-        surf = pygame.image.load('Форсаж.jpg')
-    if tip == 24:
-        surf = pygame.image.load('Король лев.jpg')
-    if tip == 25:
-        surf = pygame.image.load('matthew-mcconaughey.jpg')
-    if tip == 26:
-        surf = pygame.image.load('Индустриализация.jpg')
-    if tip == 27:
-        surf = pygame.image.load('Queen.jpg')
-    if tip == 28:
-        surf = pygame.image.load('Сербия.jpg')
-    if tip == 29:
-        surf = pygame.image.load('Я календарь.jpg')
-    if tip == 30:
-        surf = pygame.image.load('мортал комбат.jpg')
-    if tip == 31:
-        surf = pygame.image.load('Дежа ву.jpg')
-    if tip == 32:
-        surf = pygame.image.load('Морти.jpg')
-    if tip == 33:
-        surf = pygame.image.load('Черный бумер.jpg')
-    if tip == 34:
-        surf = pygame.image.load('мои алмазы.jpg')
-    if tip == 35:
-        surf = pygame.image.load('Хардбасс.jpg')
-    if tip == 36:
-        surf = pygame.image.load('Прыжок.jpg')
-    if tip == 37:
-        surf = pygame.image.load('Большой достаточно.jpg')
-    if tip == 38:
-        surf = pygame.image.load('мои алмазы.jpg')
-    screen.blit(surf, [0, 0])
+    eval('screen.blit(surf' + str(tip) + ', [0, 0])')
 
 
 pygame.display.update()
