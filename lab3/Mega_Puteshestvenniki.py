@@ -3,9 +3,11 @@ from pygame.draw import *
 import numpy as np
 
 pygame.init()
+
 # размеры экрана, через них всё задаётся
 EcrX = 900
 EcrY = 700
+
 # KTO? (WHO?) – Цвета (Colors)
 zhelty = (255, 255, 0)
 futbolka = (128, 128, 128)
@@ -15,6 +17,43 @@ platye = (128, 0, 0)
 krasny = (255, 0, 0)
 beliy = (255, 255, 255)
 
+# названия файлов импортированных песен
+file0 = 'Russkaya_narodnaya.mp3'
+file1 = 'Pelennor_Fields.mp3'
+file2 = 'Gachi.mp3'
+file3 = 'Where_Is_My_Mind.mp3'
+file4 = 'My_Heart_Will_Go_On.mp3'
+file5 = 'Strength_of_a_Thousand_Men.mp3'
+file6 = 'Doukei_to_Shikabane_no_Michi.mp3'
+file7 = 'Hunt or Be Hunted.mp3'
+file8 = 'Make_It_Bun_Dem.mp3'
+file9 = 'Skyrim_OST.mp3'
+file10 = 'The_Godfather_Theme.mp3'
+file11 = 'JoJo.mp3'
+file12 = 'Юность в сапогах.mp3'
+file13 = 'Battle_Without_Honor.mp3'
+file14 = 'Ievan_Polkka.mp3'
+file15 = 'Privet_Morrikone.mp3'
+file16 = 'He_is_a_pirate.mp3'
+file17 = 'All_Star.mp3'
+file18 = 'Terminator.mp3'
+file19 = 'Imperial_March.mp3'
+file20 = 'Let_It_Go.mp3'
+file21 = 'Back_to_the_Future.mp3'
+file22 = 'Mission_Impossible.mp3'
+file23 = 'See_You_Again.mp3'
+file24 = 'Circle_Of_Life.mp3'
+file25 = 'Interstellar.mp3'
+file26 = 'Vremya_vpered.mp3'
+file27 = 'We_Will_Rock_You.mp3'
+file28 = 'Serbia_strong.mp3'
+file29 = 'YA_kalendar.mp3'
+file30 = 'Mortal_Combat.mp3'
+file31 = 'deja-vu.mp3'
+file32 = 'For_the_Damaged_Coda.mp3'
+file33 = 'CHjornyjj_Bumer.mp3'
+file34 = 'mine diamonds.mp3'
+
 # рабочие переменные, лучше не трогать
 time = 0
 zakryto = 0
@@ -22,7 +61,7 @@ muzlo = 0
 vybor = 0
 scroll = 0
 
-FPS = 100
+FPS = 30
 screen = pygame.display.set_mode((EcrX, EcrY))
 
 pygame.font.SysFont('arial', 36)
@@ -32,134 +71,30 @@ f1 = pygame.font.Font(None, 20)
 def muzica(n):
     """
     включает выбранную музыку
+
     :param n: задаёт конкретный файл песни
     :return: none
     """
-    file0 = 'Russkaya_narodnaya.mp3'
-    file1 = 'Pelennor_Fields.mp3'
-    file2 = 'Gachi.mp3'
-    file3 = 'Where_Is_My_Mind.mp3'
-    file4 = 'My_Heart_Will_Go_On.mp3'
-    file5 = 'Strength_of_a_Thousand_Men.mp3'
-    file6 = 'Doukei_to_Shikabane_no_Michi.mp3'
-    file7 = 'Hunt or Be Hunted.mp3'
-    file8 = 'Make_It_Bun_Dem.mp3'
-    file9 = 'Skyrim_OST.mp3'
-    file10 = 'The_Godfather_Theme.mp3'
-    file11 = 'JoJo.mp3'
-    file12 = 'Юность в сапогах.mp3'
-    file13 = 'Battle_Without_Honor.mp3'
-    file14 = 'Ievan_Polkka.mp3'
-    file15 = 'Privet_Morrikone.mp3'
-    file16 = 'He_is_a_pirate.mp3'
-    file17 = 'All_Star.mp3'
-    file18 = 'Terminator.mp3'
-    file19 = 'Imperial_March.mp3'
-    file20 = 'Let_It_Go.mp3'
-    file21 = 'Back_to_the_Future.mp3'
-    file22 = 'Mission_Impossible.mp3'
-    file23 = 'See_You_Again.mp3'
-    file24 = 'Circle_Of_Life.mp3'
-    file25 = 'Interstellar.mp3'
-    file26 = 'Vremya_vpered.mp3'
-    file27 = 'We_Will_Rock_You.mp3'
-    file28 = 'Serbia_strong.mp3'
-    file29 = 'YA_kalendar.mp3'
-    file30 = 'Mortal_Combat.mp3'
-    file31 = 'deja-vu.mp3'
-    file32 = 'For_the_Damaged_Coda.mp3'
-    file33 = 'CHjornyjj_Bumer.mp3'
-    file34 = 'mine diamonds.mp3'
     pygame.init()
     pygame.mixer.init()
-    if n == 1:
-        pygame.mixer.music.load(file1)
-    if n == 0:
-        pygame.mixer.music.load(file0)
-    if n == 2:
-        pygame.mixer.music.load(file2)
-    if n == 3:
-        pygame.mixer.music.load(file3)
-    if n == 4:
-        pygame.mixer.music.load(file4)
-    if n == 5:
-        pygame.mixer.music.load(file5)
-    if n == 6:
-        pygame.mixer.music.load(file6)
-    if n == 7:
-        pygame.mixer.music.load(file7)
-    if n == 8:
-        pygame.mixer.music.load(file8)
-    if n == 9:
-        pygame.mixer.music.load(file9)
-    if n == 10:
-        pygame.mixer.music.load(file10)
-    if n == 11:
-        pygame.mixer.music.load(file11)
-    if n == 12:
-        pygame.mixer.music.load(file12)
-    if n == 13:
-        pygame.mixer.music.load(file13)
-    if n == 14:
-        pygame.mixer.music.load(file14)
-    if n == 15:
-        pygame.mixer.music.load(file15)
-    if n == 16:
-        pygame.mixer.music.load(file16)
-    if n == 17:
-        pygame.mixer.music.load(file17)
-    if n == 18:
-        pygame.mixer.music.load(file18)
-    if n == 19:
-        pygame.mixer.music.load(file19)
-    if n == 20:
-        pygame.mixer.music.load(file20)
-    if n == 21:
-        pygame.mixer.music.load(file21)
-    if n == 22:
-        pygame.mixer.music.load(file22)
-    if n == 23:
-        pygame.mixer.music.load(file23)
-    if n == 24:
-        pygame.mixer.music.load(file24)
-    if n == 25:
-        pygame.mixer.music.load(file25)
-    if n == 26:
-        pygame.mixer.music.load(file26)
-    if n == 27:
-        pygame.mixer.music.load(file27)
-    if n == 28:
-        pygame.mixer.music.load(file28)
-    if n == 29:
-        pygame.mixer.music.load(file29)
-    if n == 30:
-        pygame.mixer.music.load(file30)
-    if n == 31:
-        pygame.mixer.music.load(file31)
-    if n == 32:
-        pygame.mixer.music.load(file32)
-    if n == 33:
-        pygame.mixer.music.load(file33)
-    if n == 34:
-        pygame.mixer.music.load(file34)
+    eval('pygame.mixer.music.load(file' + str(n) + ')')
     pygame.mixer.music.play(-1)
 
 
-def music_box(tip, h=0, cursor=(1000, 1000)):
+def music_box(tip, h=0, cursor=(0, 0)):
     """
     если тип = 1, показывает кликабельную ноту в углу экрана, иначе показывает кликабельный список песен
+
     :param tip: выбирает, что показывать – ноту или список
     :param h: дополнительная (может и отрицательная) высота, чтобы можно было скроллить список
     :param cursor: положение курсора в момент нажатия
     :return: номер песни из списка
     """
-    v = 0
     if tip % 2 == 0:
         lines(screen, krasny, False, [[EcrX - 6, 12], [EcrX - 3, 9], [EcrX - 3, 6], [EcrX - 9, 0], [EcrX - 9, 21]])
         polygon(screen, krasny,
                 [[EcrX - 9, 21], [EcrX - 9, 18], [EcrX - 12, 15], [EcrX - 15, 15], [EcrX - 18, 18], [EcrX - 18, 21],
                  [EcrX - 15, 24], [EcrX - 12, 24]])
-        return 0
     if tip % 2 == 1:
         polygon(screen, [255, 210, 95],
                 [[EcrX - 200, h - 200], [EcrX, h - 200], [EcrX, h + 1000], [EcrX - 200, h + 1000]])
@@ -200,82 +135,14 @@ def music_box(tip, h=0, cursor=(1000, 1000)):
         screen.blit(f1.render('Rick and Morty', 1, (0, 0, 0)), (EcrX - 200, h + 800))
         screen.blit(f1.render('Чёрный бумер', 1, (0, 0, 0)), (EcrX - 200, h + 825))
         screen.blit(f1.render('My diamonds', 1, (0, 0, 0)), (EcrX - 200, h + 850))
-        if -h + cursor[1] < 25:
-            v = 0
-        if (-h + cursor[1] > 25) and (-h + cursor[1] < 50):
-            v = 1
-        if (-h + cursor[1] > 50) and (-h + cursor[1] < 75):
-            v = 2
-        if (-h + cursor[1] > 75) and (-h + cursor[1] < 100):
-            v = 3
-        if (-h + cursor[1] > 100) and (-h + cursor[1] < 125):
-            v = 4
-        if (-h + cursor[1] > 125) and (-h + cursor[1] < 150):
-            v = 5
-        if (-h + cursor[1] > 150) and (-h + cursor[1] < 175):
-            v = 6
-        if (-h + cursor[1] > 175) and (-h + cursor[1] < 200):
-            v = 7
-        if (-h + cursor[1] > 200) and (-h + cursor[1] < 225):
-            v = 8
-        if (-h + cursor[1] > 225) and (-h + cursor[1] < 250):
-            v = 9
-        if (-h + cursor[1] > 250) and (-h + cursor[1] < 275):
-            v = 10
-        if (-h + cursor[1] > 275) and (-h + cursor[1] < 300):
-            v = 11
-        if (-h + cursor[1] > 300) and (-h + cursor[1] < 325):
-            v = 12
-        if (-h + cursor[1] > 325) and (-h + cursor[1] < 350):
-            v = 13
-        if (-h + cursor[1] > 350) and (-h + cursor[1] < 375):
-            v = 14
-        if (-h + cursor[1] > 375) and (-h + cursor[1] < 400):
-            v = 15
-        if (-h + cursor[1] > 400) and (-h + cursor[1] < 425):
-            v = 16
-        if (-h + cursor[1] > 425) and (-h + cursor[1] < 450):
-            v = 17
-        if (-h + cursor[1] > 450) and (-h + cursor[1] < 475):
-            v = 18
-        if (-h + cursor[1] > 475) and (-h + cursor[1] < 500):
-            v = 19
-        if (-h + cursor[1] > 500) and (-h + cursor[1] < 525):
-            v = 20
-        if (-h + cursor[1] > 525) and (-h + cursor[1] < 550):
-            v = 21
-        if (-h + cursor[1] > 550) and (-h + cursor[1] < 575):
-            v = 22
-        if (-h + cursor[1] > 575) and (-h + cursor[1] < 600):
-            v = 23
-        if (-h + cursor[1] > 600) and (-h + cursor[1] < 625):
-            v = 24
-        if (-h + cursor[1] > 625) and (-h + cursor[1] < 650):
-            v = 25
-        if (-h + cursor[1] > 650) and (-h + cursor[1] < 675):
-            v = 26
-        if (-h + cursor[1] > 675) and (-h + cursor[1] < 700):
-            v = 27
-        if (-h + cursor[1] > 700) and (-h + cursor[1] < 725):
-            v = 28
-        if (-h + cursor[1] > 725) and (-h + cursor[1] < 750):
-            v = 29
-        if (-h + cursor[1] > 750) and (-h + cursor[1] < 775):
-            v = 30
-        if (-h + cursor[1] > 775) and (-h + cursor[1] < 800):
-            v = 31
-        if (-h + cursor[1] > 800) and (-h + cursor[1] < 825):
-            v = 32
-        if (-h + cursor[1] > 825) and (-h + cursor[1] < 850):
-            v = 33
-        if (-h + cursor[1] > 850) and (-h + cursor[1] < 875):
-            v = 34
-        return v
+    v = (-h + cursor[1]) // 25
+    return v
 
 
 def sun(x=30, y=30, r=30, d=2):
     """
     рисует солнышко (не солнце, а именно детское солнышко)
+
     :param x: координата х центра солнца
     :param y: координата у центра солнца
     :param r: рариус солнца
@@ -290,9 +157,10 @@ def sun(x=30, y=30, r=30, d=2):
 def roja(x, y, r):
     """
     рисует рожу
+
     :param x: координата х центра рожи
     :param y: координата у центра рожи
-    :param r: размер - радиур рожи
+    :param r: размер - радиуc рожи
     :return: ))0)
     """
     circle(screen, koja, (x, y), r)
@@ -305,6 +173,7 @@ def roja(x, y, r):
 def pocan(x=135, y=130, r=100):
     """
     рисует поцана
+
     :param x: координата х центра головы
     :param y: координата у центра головы
     :param r: коэффициент размера, примерно 1/3 высоты
@@ -321,6 +190,7 @@ def pocan(x=135, y=130, r=100):
 def morojenoe(x=60, y=250, r=10, fi=7):
     """
     рисует мороженное
+
     :param x: координата х точки острия вафельного стаканчика
     :param y: координата у точки острия вафельного стаканчика
     :param r: коэффициент размера, равен радиусу шариков
@@ -342,6 +212,7 @@ def morojenoe(x=60, y=250, r=10, fi=7):
 def pocanessa(x=300, y=130, r=100):
     """
     рисует поцанессу
+
     :param x: координата х центра головы
     :param y: координата у центра головы
     :param r: коэффициент размера, примерно 1/3 высоты
@@ -359,6 +230,7 @@ def pocanessa(x=300, y=130, r=100):
 def sharik(x=390, y=210, r=100, fi=-13):
     """
     рисует шарик
+
     :param x: координата х точки, за которую держат нитку
     :param y: координата у точки, за которую держат нитку
     :param r: коэффициент размера, численно равен длине нитки
@@ -382,6 +254,7 @@ def sharik(x=390, y=210, r=100, fi=-13):
 
 def fon(tip=0):
     """рисует (импортирует) фон в зависимости от переданного типа
+
     :param tip: задает вид фона
     :return:
     """
