@@ -151,9 +151,9 @@ def music_box(tip, h=0, cursor=(0, 0)):
                  [EcrX - 15, 24], [EcrX - 12, 24]])
     if tip % 2 == 1:
         polygon(screen, [255, 210, 95],
-                [[EcrX - 200, h], [EcrX, h], [EcrX, h + 1100], [EcrX - 200, h + 1100]])
+                [[EcrX - 200, 0], [EcrX, 0], [EcrX, 800], [EcrX - 200, 800]])
         polygon(screen, [2, 0, 0],
-                [[EcrX - 200, h], [EcrX, h], [EcrX, h + 1100], [EcrX - 200, h + 1100]], 3)
+                [[EcrX - 200, 0], [EcrX, 0], [EcrX, 800], [EcrX - 200, 800]], 3)
         line(screen, krasny, [EcrX - 20, 0], [EcrX, 20])
         line(screen, krasny, [EcrX, 0], [EcrX - 20, 20])
         screen.blit(f1.render('русская народная', 1, (0, 0, 0)), (EcrX - 180, h + 0))
@@ -348,14 +348,15 @@ while not finished:
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 4:
+            if (event.button == 4) and (scroll < 0):
                 scroll = scroll + 25
-            if event.button == 5:
+            if (event.button == 5) and (scroll > - 400):
                 scroll = scroll - 25
             if event.button == 1:
                 cursor_pos = event.pos  # считывает позицию курсора, если нажать пкм
                 if (cursor_pos[0] > EcrX - 25) and (cursor_pos[1] < 25):
-                    zakryto = zakryto + 1  # открывает/закрывает список песен
+                    zakryto = zakryto + 1  # открывает/закрывает список песен и возвращает список на исходное место
+                    scroll = 0
                 if (zakryto % 2 == 1) and (cursor_pos[0] < EcrX - 25) and (cursor_pos[0] > EcrX - 200) and (
                         -scroll + cursor_pos[1] < 1100):
                     vybor = music_box(zakryto, scroll, cursor_pos)  # в переменную записывает песню, на которую кликнули
