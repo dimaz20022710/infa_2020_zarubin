@@ -18,7 +18,7 @@ krasny = (255, 0, 0)
 beliy = (255, 255, 255)
 
 # названия файлов импортированных песен и изображений
-if 0 == 0:     # просто чтобы свернуть можно было
+if 0 == 0:  # просто чтобы свернуть можно было
     file0 = 'Russkaya_narodnaya.mp3'
     file1 = 'Pelennor_Fields.mp3'
     file2 = 'Gachi.mp3'
@@ -54,6 +54,15 @@ if 0 == 0:     # просто чтобы свернуть можно было
     file32 = 'For_the_Damaged_Coda.mp3'
     file33 = 'CHjornyjj_Bumer.mp3'
     file34 = 'mine diamonds.mp3'
+    file35 = 'HardbASS.mp3'
+    file36 = 'прыжок со школы.mp3'
+    file37 = 'Big Enough.mp3'
+    file38 = 'OT_VINTA.mp3'
+    file39 = 'Crab_Rave.mp3'
+    file40 = 'Sanya_ty_v_poryadke.mp3'
+    file41 = 'TRAKTOR.mp3'
+    file42 = 'Giorno Giovanna.mp3'
+    file43 = 'Gorod_Omsk.mp3'
     surf0 = pygame.image.load('Berezki.jpg')
     surf1 = pygame.image.load('Пеленнорские поля.jpg')
     surf2 = pygame.image.load('Гачи.jpg')
@@ -92,7 +101,12 @@ if 0 == 0:     # просто чтобы свернуть можно было
     surf35 = pygame.image.load('Хардбасс.jpg')
     surf36 = pygame.image.load('Прыжок.jpg')
     surf37 = pygame.image.load('Большой достаточно.jpg')
-    surf38 = pygame.image.load('мои алмазы.jpg')
+    surf38 = pygame.image.load('Ат винта.jpg')
+    surf39 = pygame.image.load('Краб.jpg')
+    surf40 = pygame.image.load('Саня.jpg')
+    surf41 = pygame.image.load('Трактор.jpg')
+    surf42 = pygame.image.load('Джорно.jpg')
+    surf43 = pygame.image.load('Омск.jpg')
 
 # рабочие переменные, лучше не трогать
 time = 0
@@ -137,7 +151,7 @@ def music_box(tip, h=0, cursor=(0, 0)):
                  [EcrX - 15, 24], [EcrX - 12, 24]])
     if tip % 2 == 1:
         polygon(screen, [255, 210, 95],
-                [[EcrX - 200, h], [EcrX, h], [EcrX, h + 1000], [EcrX - 200, h + 1000]])
+                [[EcrX - 200, h], [EcrX, h], [EcrX, h + 1100], [EcrX - 200, h + 1100]])
         line(screen, krasny, [EcrX - 20, 0], [EcrX, 20])
         line(screen, krasny, [EcrX, 0], [EcrX - 20, 20])
         screen.blit(f1.render('русская народная', 1, (0, 0, 0)), (EcrX - 200, h + 0))
@@ -175,6 +189,15 @@ def music_box(tip, h=0, cursor=(0, 0)):
         screen.blit(f1.render('Rick and Morty', 1, (0, 0, 0)), (EcrX - 200, h + 800))
         screen.blit(f1.render('Чёрный бумер', 1, (0, 0, 0)), (EcrX - 200, h + 825))
         screen.blit(f1.render('My diamonds', 1, (0, 0, 0)), (EcrX - 200, h + 850))
+        screen.blit(f1.render('Хардбасс', 1, (0, 0, 0)), (EcrX - 200, h + 875))
+        screen.blit(f1.render('Прыжок со школы', 1, (0, 0, 0)), (EcrX - 200, h + 900))
+        screen.blit(f1.render('Bolshoy dostatochno', 1, (0, 0, 0)), (EcrX - 200, h + 925))
+        screen.blit(f1.render('AT VINTA', 1, (0, 0, 0)), (EcrX - 200, h + 950))
+        screen.blit(f1.render('Crab rave', 1, (0, 0, 0)), (EcrX - 200, h + 975))
+        screen.blit(f1.render('Sanya are you okey', 1, (0, 0, 0)), (EcrX - 200, h + 1000))
+        screen.blit(f1.render('Синий трактор', 1, (0, 0, 0)), (EcrX - 200, h + 1025))
+        screen.blit(f1.render('Тема джорно', 1, (0, 0, 0)), (EcrX - 200, h + 1050))
+        screen.blit(f1.render('Город Омск', 1, (0, 0, 0)), (EcrX - 200, h + 1075))
     v = (-h + cursor[1]) // 25
     return v
 
@@ -331,7 +354,8 @@ while not finished:
                 cursor_pos = event.pos  # считывает позицию курсора, если нажать пкм
                 if (cursor_pos[0] > EcrX - 25) and (cursor_pos[1] < 25):
                     zakryto = zakryto + 1  # открывает/закрывает список песен
-                if (zakryto % 2 == 1) and (cursor_pos[0] < EcrX - 25) and (cursor_pos[0] > EcrX - 200):
+                if (zakryto % 2 == 1) and (cursor_pos[0] < EcrX - 25) and (cursor_pos[0] > EcrX - 200) and (
+                        -scroll + cursor_pos[1] < 1100):
                     vybor = music_box(zakryto, scroll, cursor_pos)  # в переменную записывает песню, на которую кликнули
         if event.type == pygame.QUIT:
             finished = True
