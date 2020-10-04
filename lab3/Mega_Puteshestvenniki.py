@@ -198,7 +198,7 @@ def music_box(tip, h=0, cursor=(0, 0)):
         screen.blit(f1.render('Crab rave', 1, (0, 0, 0)), (EcrX - 180, h + 975))
         screen.blit(f1.render('Sanya are you okey', 1, (0, 0, 0)), (EcrX - 180, h + 1000))
         screen.blit(f1.render('Синий трактор', 1, (0, 0, 0)), (EcrX - 180, h + 1025))
-        screen.blit(f1.render('Тема джорно', 1, (0, 0, 0)), (EcrX - 180, h + 1050))
+        screen.blit(f1.render('Тема Джорно', 1, (0, 0, 0)), (EcrX - 180, h + 1050))
         screen.blit(f1.render('Город Омск', 1, (0, 0, 0)), (EcrX - 180, h + 1075))
     v = (-h + cursor[1]) // 25
     return v
