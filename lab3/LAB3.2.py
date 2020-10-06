@@ -103,6 +103,7 @@ def house(x, y, scale=1.0):
     windows(x, y, width, height)
     top_windows(x, y, width, height)
     vertical_beams(x, y, width, height, scale)
+    tubes(x, y, width, height)
     d.rect(screen, brown, (x, y, width, height))
     d.rect(screen, dark_gray, (x - int(20 * scale), y + 5, int(width + 40 * scale), height // 8))
     d.rect(screen, dark_gray, (x - int(20 * scale), y + 5 - height // 4, int(width + 40 * scale), height // 12))
@@ -111,7 +112,6 @@ def house(x, y, scale=1.0):
                                   (x, y - height + height // 6), (x, y - height)))
     d.polygon(screen, dark_gray, ((x + width + int(30 * scale), y - height + height // 6),
                                   (x + width, y - height + height // 6), (x + width, y - height)))
-    tubes(x, y, width, height)
     cords = [(x + int(22 * scale), y + int(35 * scale)), (x + int(195 * scale), y + int(105 * scale)),
              (x + int(40 * scale), y - int(90 * scale)), (x + int(180 * scale), y - int(50 * scale))]
     probs = coinflip(4)
