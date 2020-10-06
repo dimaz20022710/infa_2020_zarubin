@@ -142,7 +142,7 @@ def cloud(x, y, grayness=0.0, scale=1.0):
              (x + 25, y + int(12 * scale)), 45)
     screen.blit(s, (0, 0))
 
-
+# function draws 3 windows centred in the middle of the house
 def windows(x, y, width, height):
     flp = coinflip(3)
     for i in range(3):
@@ -152,7 +152,7 @@ def windows(x, y, width, height):
             clr = window_color
         d.rect(screen, clr, (x + width * (2 * i + 1) // 7, y + height // 3, width // 7, height // 3))
 
-
+# function draws 6 second floor windows centred in the middle of the house
 def top_windows(x, y, width, height):
     for i in range(11):
         if i % 2 == 0:
@@ -161,13 +161,13 @@ def top_windows(x, y, width, height):
             clr = window_color
         d.rect(screen, clr, (x + i * width // 11, y - height, width // 11, height))
 
-
+# function draws 7 beams for the balcony of the house
 def vertical_beams(x, y, width, height, scale):
     for i in range(7):
         d.rect(screen, dark_gray, (x - int(20 * scale) + int((width + 40 * scale) * (2 * i + 0.25) / 13),
                                    y + 5 - height // 4, width // 26, height // 4))
 
-
+# function draws a random number of house chimneys on the its root
 def tubes(x, y, width, height):
     for i in range(int(6 * rnd.random())):
         d.rect(screen, (40, 42, 40), (x + int(width * rnd.random()), y - height + int(0.12 * height * rnd.random()),
