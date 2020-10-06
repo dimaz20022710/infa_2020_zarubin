@@ -96,36 +96,22 @@ def cobweb(x, y, scale=1.0):
                ((xmod_next + x) // 2, (ymod_next + y) // 2))
 
 
+# function draws a house with (x, y) coordinates of top left corner
 def house(x, y, scale=1.0):
     width = int(220 * scale)
     height = int(130 * scale)
+    windows(x, y, width, height)
+    top_windows(x, y, width, height)
+    vertical_beams(x, y, width, height, scale)
     d.rect(screen, brown, (x, y, width, height))
-    for i in range(11):
-        if i % 2 == 0:
-            clr = brown
-        else:
-            clr = window_color
-        d.rect(screen, clr, (x + i * width // 11, y - height, width // 11, height))
     d.rect(screen, dark_gray, (x - int(20 * scale), y + 5, int(width + 40 * scale), height // 8))
-    for i in range(7):
-        d.rect(screen, dark_gray, (x - int(20 * scale) + int((width + 40 * scale) * (2 * i + 0.25) / 13),
-                                   y + 5 - height // 4, width // 26, height // 4))
     d.rect(screen, dark_gray, (x - int(20 * scale), y + 5 - height // 4, int(width + 40 * scale), height // 12))
-    flp = coinflip(3)
-    for i in range(3):
-        if flp[i] == 1:
-            clr = yellow
-        else:
-            clr = window_color
-        d.rect(screen, clr, (x + width * (2 * i + 1) // 7, y + height // 3, width // 7, height // 3))
     d.rect(screen, dark_gray, (x, y - height, width, height // 6))
     d.polygon(screen, dark_gray, ((x - int(30 * scale), y - height + height // 6),
                                   (x, y - height + height // 6), (x, y - height)))
     d.polygon(screen, dark_gray, ((x + width + int(30 * scale), y - height + height // 6),
                                   (x + width, y - height + height // 6), (x + width, y - height)))
-    for i in range(int(6 * rnd.random())):
-        d.rect(screen, (40, 42, 40), (x + int(width * rnd.random()), y - height + int(0.12 * height * rnd.random()),
-                                      int(width / 10 * rnd.random()) + 3, -int(height / 3 * rnd.random()) - 20))
+    tubes(x, y, width, height)
     cords = [(x + int(22 * scale), y + int(35 * scale)), (x + int(195 * scale), y + int(105 * scale)),
              (x + int(40 * scale), y - int(90 * scale)), (x + int(180 * scale), y - int(50 * scale))]
     probs = coinflip(4)
@@ -155,6 +141,37 @@ def cloud(x, y, grayness=0.0, scale=1.0):
     d.circle(s, (255 * grayness, 255 * grayness, 255 * grayness, 100),
              (x + 25, y + int(12 * scale)), 45)
     screen.blit(s, (0, 0))
+
+
+def windows(x, y, width, height):
+    flp = coinflip(3)
+    for i in range(3):
+        if flp[i] == 1:
+            clr = yellow
+        else:
+            clr = window_color
+        d.rect(screen, clr, (x + width * (2 * i + 1) // 7, y + height // 3, width // 7, height // 3))
+
+
+def top_windows(x, y, width, height):
+    for i in range(11):
+        if i % 2 == 0:
+            clr = brown
+        else:
+            clr = window_color
+        d.rect(screen, clr, (x + i * width // 11, y - height, width // 11, height))
+
+
+def vertical_beams(x, y, width, height, scale):
+    for i in range(7):
+        d.rect(screen, dark_gray, (x - int(20 * scale) + int((width + 40 * scale) * (2 * i + 0.25) / 13),
+                                   y + 5 - height // 4, width // 26, height // 4))
+
+
+def tubes(x, y, width, height):
+    for i in range(int(6 * rnd.random())):
+        d.rect(screen, (40, 42, 40), (x + int(width * rnd.random()), y - height + int(0.12 * height * rnd.random()),
+                                      int(width / 10 * rnd.random()) + 3, -int(height / 3 * rnd.random()) - 20))
 
 
 moon(420, 100, R=60)
