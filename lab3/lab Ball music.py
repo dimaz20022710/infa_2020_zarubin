@@ -1,3 +1,4 @@
+# coding=utf-8
 import pygame
 from pygame.draw import *
 from random import randint
@@ -11,8 +12,6 @@ MAGENTA = (255, 0, 255)
 CYAN = (0, 255, 255)
 BLACK = (0, 0, 0)
 COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
-
-f1 = pygame.font.Font(None, 20)
 
 if 0 == 0:  # просто чтобы свернуть можно было
     file0 = 'Russkaya_narodnaya.mp3'
@@ -29,7 +28,7 @@ if 0 == 0:  # просто чтобы свернуть можно было
     file11 = 'JoJo.mp3'
     file12 = 'Юность в сапогах.mp3'
     file13 = 'Battle_Without_Honor.mp3'
-    file14 = 'Ievan_Polkka.mp3'
+    file14 = 'Ievan_Polkka.wav'
     file15 = 'Privet_Morrikone.mp3'
     file16 = 'He_is_a_pirate.mp3'
     file17 = 'All_Star.mp3'
@@ -59,6 +58,7 @@ if 0 == 0:  # просто чтобы свернуть можно было
     file41 = 'TRAKTOR.mp3'
     file42 = 'Giorno Giovanna.mp3'
     file43 = 'Gorod_Omsk.mp3'
+
 
 def music(n):
     """
@@ -194,7 +194,7 @@ def special(x, y):
     """Draws special aim that costs 10 points"""
     rect(screen, RED, (x - 20, y - 20, 40, 40))
 
-'''
+
 def write_leaders():
     """Writes leaderboards"""
     wb = openpyxl.load_workbook(filename='leaderboard.xlsx')
@@ -228,7 +228,7 @@ def write_leaders():
         sheet.cell(row=i, column=2).value = j
         i += 1
 
-    wb.save('leaderboard.xlsx')'''
+    wb.save('leaderboard.xlsx')
 
 
 success = 0
@@ -242,7 +242,7 @@ difficulty = int(input("Difficulty 1, 2 or 3: "))
 pygame.init()
 
 FPS = 45
-game_lenght = 20
+game_lenght = 30
 
 screen_height = 1200
 screen_width = 700
@@ -254,7 +254,16 @@ pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
 
-music(7)
+#music(14)
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load('Music/Rollin.wav')
+pygame.mixer.music.play(-1)
+
+intro = 0
+while intro < 300:
+    intro += 1
+    clock.tick(FPS)
 
 while time < game_lenght * FPS and not finished:
     clock.tick(FPS)
