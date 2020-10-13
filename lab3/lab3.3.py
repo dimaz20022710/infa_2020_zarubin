@@ -1,8 +1,7 @@
 import pygame
 from pygame.draw import *
 from random import randint
-#import xlsxwriter as xlsx
-#import xlrd, xlwt
+import openpyxl
 
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
@@ -24,15 +23,16 @@ class Ball:
         self.v_y = cor[4]
         self.a_x = cor[5]
         self.a_y = cor[6]
+        self.complexity = cor[7]
         self.color = self.colour()
 
     def draw_ball(self, x, y):
         self.x = x
         self.y = y
-        if abs(self.v_x) > 20:
+        if abs(self.v_x) > 8 * self.complexity:
             self.a_x *= -1
             self.a_x //= 2
-        if abs(self.v_y) > 20:
+        if abs(self.v_y) > 8 * self.complexity:
             self.a_y *= -1
             self.a_y //= 2
         self.check_walls()
@@ -77,28 +77,32 @@ class Ball:
     def movement_y(self):
         return self.v_y
 
+    def complex(self):
+        return self.complexity
+
     @staticmethod
     def colour():
         color = COLORS[randint(0, 5)]
         return color
 
 
-def coordinates(complexity):
+def coordinates(compl):
     x = randint(100, screen_height - 100)
     y = randint(100, screen_width - 100)
-    r = randint(50 / complexity, 100 / complexity)
-    v_x = randint(-2 * complexity, 2 * complexity)
-    v_y = randint(-2 * complexity, 2 * complexity)
-    a_x = randint(-1 * complexity, 1 * complexity)
-    a_y = randint(-1 * complexity, 1 * complexity)
-    return [x, y, r, v_x, v_y, a_x, a_y]
+    r = randint(50 / compl, 100 / compl)
+    v_x = randint(-2 * compl, 2 * compl)
+    v_y = randint(-2 * compl, 2 * compl)
+    a_x = randint(-1 * compl, 1 * compl)
+    a_y = randint(-1 * compl, 1 * compl)
+    complex = compl
+    return [x, y, r, v_x, v_y, a_x, a_y, complex]
 
 
 def hit(position):
     for i in balls:
         if i.ball_coordinates()[2] ** 2 > (position[0] - i.ball_coordinates()[0]) ** 2 + (
                 position[1] - i.ball_coordinates()[1]) ** 2:
-            return [(balls.index(i)) % 3 + 1, i]
+            return [i.complex(), i]
     return [0, 0]
 
 
@@ -125,12 +129,46 @@ def special(x, y):
     rect(screen, RED, (x - 20, y - 20, 40, 40))
 
 
+def write_leaders():
+    wb = openpyxl.load_workbook(filename='leaderboard.xlsx')
+    sheet = wb['test']
+    names = []
+    scores = []
+    i = 1
+    for j in range(10):
+        names.append(str(sheet.cell(row=i, column=1).value))
+        scores.append(int(sheet.cell(row=i, column=2).value))
+        i += 1
+
+    names.append(your_name)
+    scores.append(success - fail)
+    leaders = dict(zip(scores, names))
+    lead_keys = list(leaders.keys())
+    lead_keys = sorted(lead_keys, reverse=True)
+    lead_items = []
+    for j in lead_keys:
+        lead_items.append((leaders[j]))
+    lead_keys.pop()
+    lead_items.pop()
+
+    i = 1
+    for j in lead_items:
+        sheet.cell(row=i, column=1).value = j
+        i += 1
+
+    i = 1
+    for j in lead_keys:
+        sheet.cell(row=i, column=2).value = j
+        i += 1
+
+    wb.save('leaderboard.xlsx')
+
+
 success = 0
 fail = 0
 time = 0
 spec_x = -1000
 spec_y = -1000
-
 
 difficulty = int(input("Difficulty 1, 2 or 3: "))
 complexity = [1, 2, 3, 2, 3]
@@ -149,7 +187,7 @@ pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
 
-while not finished:
+while time < 675:
     clock.tick(FPS)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -157,8 +195,9 @@ while not finished:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if hit(event.pos)[0] > 0:
                 success += hit(event.pos)[0]
-                coor_new = coordinates(complexity[balls.index(hit(event.pos)[1])])
+                coor_new = coordinates(hit(event.pos)[1].complex())
                 coor_new.pop(2)
+                coor_new.pop()
                 hit(event.pos)[1].draw_new_ball(*coor_new)
             elif abs(event.pos[0] - spec_x) < 20 and abs(event.pos[1] - spec_y) < 20:
                 spec_x = -1000
@@ -166,12 +205,13 @@ while not finished:
                 success += 10
             else:
                 fail += 1
-    if time % (FPS * (15 - difficulty)) == 0:
+    if time % (FPS * (10 - difficulty)) == 0:
         screen.fill(BLACK)
         balls = new_balls(difficulty)
         for i in balls:
             coor_new = coordinates(complexity[balls.index(i)])
             coor_new.pop(2)
+            coor_new.pop()
             i.draw_new_ball(*coor_new)
     elif time % 3 == 0:
         screen.fill(BLACK)
@@ -190,21 +230,7 @@ while not finished:
     time += 1
 
 pygame.quit()
-#your_name = raw_input("Your name: ")
+your_name = raw_input("Your name: ")
 print("Your score: " + str(success - fail))
-"""
-rb = xlrd.open_workbook('leaderboard.xlsx')
-sheet = rb.sheet_by_index(0)
-vals = [sheet.row_values(rownum) for rownum in range(sheet.nrows)]
-print(vals)
 
-wb = xlwt.Workbook()
-ws = wb.add_sheet('Test')
-i = 0
-for rec in vals:
-    ws.write(1, i, rec[0])
-    i += i
-
-
-workbook = xlsx.Workbook('leaderboard.xlsx')
-workbook.write()"""
+write_leaders()
