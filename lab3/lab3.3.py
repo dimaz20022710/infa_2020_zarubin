@@ -27,6 +27,7 @@ class Ball:
         self.color = self.colour()
 
     def draw_ball(self, x, y):
+        """Redraws ball in x, y coordinates"""
         self.x = x
         self.y = y
         if abs(self.v_x) > 8 * self.complexity:
@@ -41,6 +42,7 @@ class Ball:
         circle(screen, self.color, (self.x, self.y), self.r)
 
     def draw_new_ball(self, x, y, v_x, v_y, a_x, a_y):
+        """Draws new ball with given coordinates velocity and acceleration"""
         self.x = x
         self.y = y
         self.v_x = v_x
@@ -55,6 +57,7 @@ class Ball:
         circle(screen, self.color, (self.x, self.y), self.r)
 
     def check_walls(self):
+        """Creates wall reflection"""
         if self.x > screen_height:
             self.v_x *= -1
             self.v_y = randint(-7, 7)
@@ -87,6 +90,7 @@ class Ball:
 
 
 def coordinates(compl):
+    """Creates random coordinates for the new ball depending on the ball's complexity"""
     x = randint(100, screen_height - 100)
     y = randint(100, screen_width - 100)
     r = randint(50 / compl, 100 / compl)
@@ -99,6 +103,7 @@ def coordinates(compl):
 
 
 def hit(position):
+    """Checks if click hited the ball"""
     for i in balls:
         if i.ball_coordinates()[2] ** 2 > (position[0] - i.ball_coordinates()[0]) ** 2 + (
                 position[1] - i.ball_coordinates()[1]) ** 2:
@@ -107,6 +112,7 @@ def hit(position):
 
 
 def new_balls(compl):
+    """Creates bew balls depending on the level difficulty"""
     if compl == 1:
         a = Ball(coordinates(1))
         balls = [a]
@@ -126,10 +132,12 @@ def new_balls(compl):
 
 
 def special(x, y):
+    """Draws special aim that costs 10 points"""
     rect(screen, RED, (x - 20, y - 20, 40, 40))
 
 
 def write_leaders():
+    """Writes leaderboards"""
     wb = openpyxl.load_workbook(filename='leaderboard.xlsx')
     sheet = wb['test']
     names = []
