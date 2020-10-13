@@ -93,7 +93,7 @@ def coordinates(compl):
     """Creates random coordinates for the new ball depending on the ball's complexity"""
     x = randint(100, screen_height - 100)
     y = randint(100, screen_width - 100)
-    r = randint(50 / compl, 100 / compl)
+    r = randint(50 / compl, 80 / compl)
     v_x = randint(-2 * compl, 2 * compl)
     v_y = randint(-2 * compl, 2 * compl)
     a_x = randint(-1 * compl, 1 * compl)
