@@ -13,54 +13,8 @@ CYAN = (0, 255, 255)
 BLACK = (0, 0, 0)
 COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 
-if 0 == 0:  # просто чтобы свернуть можно было
-    file0 = 'Russkaya_narodnaya.mp3'
-    file1 = 'Pelennor_Fields.mp3'
-    file2 = 'Gachi.mp3'
-    file3 = 'Where_Is_My_Mind.mp3'
-    file4 = 'My_Heart_Will_Go_On.mp3'
-    file5 = 'Strength_of_a_Thousand_Men.mp3'
-    file6 = 'Doukei_to_Shikabane_no_Michi.mp3'
-    file7 = 'Hunt or Be Hunted.mp3'
-    file8 = 'Make_It_Bun_Dem.mp3'
-    file9 = 'Skyrim_OST.mp3'
-    file10 = 'The_Godfather_Theme.mp3'
-    file11 = 'JoJo.mp3'
-    file12 = 'Юность в сапогах.mp3'
-    file13 = 'Battle_Without_Honor.mp3'
-    file14 = 'Ievan_Polkka.wav'
-    file15 = 'Privet_Morrikone.mp3'
-    file16 = 'He_is_a_pirate.mp3'
-    file17 = 'All_Star.mp3'
-    file18 = 'Terminator.mp3'
-    file19 = 'Imperial_March.mp3'
-    file20 = 'Let_It_Go.mp3'
-    file21 = 'Back_to_the_Future.mp3'
-    file22 = 'Mission_Impossible.mp3'
-    file23 = 'See_You_Again.mp3'
-    file24 = 'Circle_Of_Life.mp3'
-    file25 = 'Interstellar.mp3'
-    file26 = 'Vremya_vpered.mp3'
-    file27 = 'We_Will_Rock_You.mp3'
-    file28 = 'Serbia_strong.mp3'
-    file29 = 'YA_kalendar.mp3'
-    file30 = 'Mortal_Combat.mp3'
-    file31 = 'deja-vu.mp3'
-    file32 = 'For_the_Damaged_Coda.mp3'
-    file33 = 'CHjornyjj_Bumer.mp3'
-    file34 = 'mine diamonds.mp3'
-    file35 = 'HardbASS.mp3'
-    file36 = 'прыжок со школы.mp3'
-    file37 = 'Big Enough.mp3'
-    file38 = 'OT_VINTA.mp3'
-    file39 = 'Crab_Rave.mp3'
-    file40 = 'Sanya_ty_v_poryadke.mp3'
-    file41 = 'TRAKTOR.mp3'
-    file42 = 'Giorno Giovanna.mp3'
-    file43 = 'Gorod_Omsk.mp3'
 
-
-def music(n):
+def music():
     """
     включает выбранную музыку
     :param n: задаёт конкретный файл песни
@@ -68,7 +22,12 @@ def music(n):
     """
     pygame.init()
     pygame.mixer.init()
-    eval('pygame.mixer.music.load(file' + str(n) + ')')
+    if difficulty == 1:
+        pygame.mixer.music.load('Music/Ievan Polkka.wav')
+    if difficulty == 2:
+        pygame.mixer.music.load('Music/Rollin.wav')
+    if difficulty == 3:
+        pygame.mixer.music.load('Music/Toxicity.wav')
     pygame.mixer.music.play(-1)
 
 
@@ -242,7 +201,7 @@ difficulty = int(input("Difficulty 1, 2 or 3: "))
 pygame.init()
 
 FPS = 45
-game_lenght = 30
+game_length = 30
 
 screen_height = 1200
 screen_width = 700
@@ -254,18 +213,14 @@ pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
 
-#music(14)
-pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.load('Music/Rollin.wav')
-pygame.mixer.music.play(-1)
+music()
 
 intro = 0
 while intro < 300:
     intro += 1
     clock.tick(FPS)
 
-while time < game_lenght * FPS and not finished:
+while time < game_length * FPS and not finished:
     clock.tick(FPS)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -294,8 +249,8 @@ while time < game_lenght * FPS and not finished:
     elif time % 3 == 0:
         screen.fill(BLACK)
         if randint(1, 55) == 50:
-            spec_x = randint(0, screen_height)
-            spec_y = randint(0, screen_width)
+            spec_x = randint(50, screen_height - 50)
+            spec_y = randint(50, screen_width - 50)
             special(spec_x, spec_y)
         for i in balls:
             i.draw_ball(i.ball_coordinates()[0] + i.movement_x(), i.ball_coordinates()[1] + i.movement_y())
