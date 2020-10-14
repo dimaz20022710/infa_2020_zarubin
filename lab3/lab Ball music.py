@@ -15,11 +15,7 @@ COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 
 
 def music():
-    """
-    включает выбранную музыку
-    :param n: задаёт конкретный файл песни
-    :return: none
-    """
+    """Plays music for the game depending on difficulty level"""
     pygame.init()
     pygame.mixer.init()
     if difficulty == 1:
